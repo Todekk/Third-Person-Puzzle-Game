@@ -16,7 +16,7 @@ public class BulletProjectile : MonoBehaviour
     }
     void Start()
     {
-        float speed = 10f;
+        float speed = 30f;
         bulletRigidbody.velocity = transform.forward * speed;
     }
 
@@ -30,12 +30,18 @@ public class BulletProjectile : MonoBehaviour
         if(other.GetComponent<BulletTarget>() != null)
         {
             Instantiate(vfxHitGreen, transform.position, Quaternion.identity);
+            Destroy(gameObject);
+        }
+        if(other.GetComponent<BombTarget>())
+        {
+
         }
         else
         {
             Instantiate(vfxHitRed, transform.position, Quaternion.identity);
+            Destroy(gameObject);
         }
-        Destroy(gameObject);
+        
     }
 }
 
