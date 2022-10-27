@@ -19,7 +19,11 @@ public class ButtonActivation : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        inactive.SetActive(false);
-        active.SetActive(true);
+        if (other.GetComponent<ThirdPersonShooterController>())
+        {
+            active.SetActive(true);
+            inactive.SetActive(false);
+        }
+        
     }
 }
